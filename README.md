@@ -25,3 +25,7 @@ Paseo 侧边栏「Token 用量」：按机器、按天、按工具和模型显�
 | `client/settings-screen.tsx` | 设置页 |
 
 本地开发：`bun install && bun x tsc --noEmit`，再执行 `paseo plugin add <本目录>` 装到本机 daemon。改完代码后执行 `paseo plugin reload ccusage-hub` 生效。
+
+## 许可
+
+MIT，见 [LICENSE](LICENSE)。
