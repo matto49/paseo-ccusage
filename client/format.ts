@@ -28,3 +28,21 @@ export function shiftDate(date: string, days: number): string {
   const [y, m, d] = date.split("-").map(Number);
   return new Date(Date.UTC(y, m - 1, d + days)).toISOString().slice(0, 10);
 }
+
+export function formatPercent(ratio: number): string {
+  return `${(ratio * 100).toFixed(1)}%`;
+}
+
+/** Relative change, or percentage points for values that are already ratios. Null when there is nothing to compare. */
+export function formatDelta(
+  value: number | null,
+  previous: number | null,
+  points: boolean,
+): { text: string; direction: "up" | "down" | "flat" } | null {
+  if (value === null || previous === null) return null;
+  const diff = points ? (value - previous) * 100 : previous === 0 ? null : ((value - previous) / previous) * 100;
+  if (diff === null || !Number.isFinite(diff)) return null;
+  const direction = Math.abs(diff) < 0.05 ? "flat" : diff > 0 ? "up" : "down";
+  const sign = diff > 0 ? "+" : "";
+  return { text: `${sign}${diff.toFixed(1)}${points ? "pt" : "%"}`, direction };
+}
