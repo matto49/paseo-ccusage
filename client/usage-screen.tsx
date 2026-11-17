@@ -261,7 +261,7 @@ function KpiTile({ kpi, styles, theme, width }: { kpi: Kpi; styles: Styles; them
 export function UsageScreen({ theme, layout }: PluginScreenProps) {
   const styles = useMemo(() => makeStyles(theme, layout.compact), [theme, layout.compact]);
   const [range, setRange] = useState<Range>("7d");
-  const [metric, setMetric] = useState<Metric>("cost");
+  const [metric, setMetric] = useState<Metric>("tokens");
   const [showAllModels, setShowAllModels] = useState(false);
   const [showAllDays, setShowAllDays] = useState(false);
   const [width, setWidth] = useState(0);
